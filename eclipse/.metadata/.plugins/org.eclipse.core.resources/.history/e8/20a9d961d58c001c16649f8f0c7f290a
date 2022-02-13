@@ -1,0 +1,13 @@
+package com.oldschoolminecraft.client.hud;
+
+import java.awt.Color;
+
+import net.minecraft.client.Minecraft;
+
+public class HudMainMenu {
+	public static void draw() {
+		Minecraft mc = Minecraft.getMinecraft();
+		
+		mc.fontRenderer.drawStringWithShadow("Hello little one!", 0, mc.displayHeight - 100, Color.HSBtoRGB((float)(System.currentTimeMillis() % 1000L) / 1000.0f, 0.8f, 0.8f));
+	}
+}

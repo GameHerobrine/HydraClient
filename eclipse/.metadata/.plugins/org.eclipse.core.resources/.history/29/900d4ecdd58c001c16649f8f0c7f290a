@@ -1,0 +1,15 @@
+package com.oldschoolminecraft.client.hud;
+
+import java.awt.Color;
+
+import com.oldschoolminecraft.client.util.Utils;
+
+import net.minecraft.client.Minecraft;
+
+public class HudMainMenu {
+	public static void draw() {
+		Minecraft mc = Minecraft.getMinecraft();
+		
+		mc.fontRenderer.drawStringWithShadow("Hello little one!", 0, 10, Utils.rainbow());
+	}
+}

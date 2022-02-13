@@ -1,0 +1,7 @@
+package com.oldschoolminecraft.client.hud;
+
+public class HudMainMenu {
+	public static void draw() {
+		
+	}
+}

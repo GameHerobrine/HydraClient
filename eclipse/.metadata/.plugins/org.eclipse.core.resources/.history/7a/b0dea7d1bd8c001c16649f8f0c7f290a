@@ -1,0 +1,5 @@
+package com.oldschoolminecraft.client.hud;
+
+public class InGameHud {
+
+}

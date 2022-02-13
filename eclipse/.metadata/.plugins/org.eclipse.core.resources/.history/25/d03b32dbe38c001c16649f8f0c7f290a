@@ -1,0 +1,14 @@
+package com.oldschoolminecraft.client;
+
+public class Client {
+	
+	//API
+	public static String apiURL = "https://os-mc.net/api/";
+
+	
+	//Client
+	public String version = "v0.1";
+	public String name = "OSM Client";
+	public boolean isSupporter = false;
+	public boolean isStaff = false;
+}

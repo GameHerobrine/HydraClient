@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.hud.InGameHud"/>
+    <fullyQualifiedTypeName name="org.lwjgl.util.glu.GLU"/>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.hud.HudMainMenu"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.util.Utils"/>
+    <fullyQualifiedTypeName name="net.minecraft.src.ScaledResolution"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+    <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="net.minecraft.client.Minecraft"/>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.perks.PerkChecker"/>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.Client"/>
+    <fullyQualifiedTypeName name="com.oldschoolminecraft.client.api.api"/>
+</qualifiedTypeNameHistroy>

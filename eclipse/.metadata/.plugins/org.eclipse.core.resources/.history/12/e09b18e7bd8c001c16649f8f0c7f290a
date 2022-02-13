@@ -1,0 +1,10 @@
+package com.oldschoolminecraft.client.hud;
+
+import net.minecraft.client.Minecraft;
+
+public class InGameHud {
+	public void draw() {
+		Minecraft mc = Minecraft.getMinecraft();
+		
+	}
+}

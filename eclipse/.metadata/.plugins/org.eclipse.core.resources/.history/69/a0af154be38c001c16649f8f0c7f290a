@@ -1,0 +1,6 @@
+package com.oldschoolminecraft.client;
+
+public class Client {
+	public String version = "v0.1";
+	public String name = "OSM Client";
+}
