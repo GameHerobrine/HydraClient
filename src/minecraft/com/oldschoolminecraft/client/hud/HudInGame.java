@@ -16,8 +16,6 @@ public class HudInGame {
 			fr.drawStringWithShadow("isStaff: " + Client.isStaff, 2, offset, -1);
 			offset += 12;
 			fr.drawStringWithShadow("username: " + Client.username, 2, offset, -1);
-			offset += 12;
-			fr.drawStringWithShadow("Speed: " + mc.thePlayer.s, 2, offset, -1);
 		}
 	}
 }
