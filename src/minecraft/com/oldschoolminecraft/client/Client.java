@@ -17,7 +17,6 @@ public class Client {
 	//Client
 	public String version = "v0.1";
 	public String name = "OSM Client";
-	public String username;
 	public boolean isSupporter = false;
 	public boolean isDebugMode = false;
 	public boolean isStaff = false;
@@ -25,13 +24,12 @@ public class Client {
 	public EventManager eventManager;
 
 	public void onEnable() {
-		username = mc.session.username;
 		eventManager = new EventManager();
 		perkChecker = new PerkChecker();
-		perkChecker.fetchPerks();
+		perkChecker.fetchPerks(mc.session.username);
 		System.out.print(isSupporter);
 
-		if(username.contains("Player"))
+		if(mc.session.username.contains("Player"))
 			isDebugMode = true;
 	}
 }

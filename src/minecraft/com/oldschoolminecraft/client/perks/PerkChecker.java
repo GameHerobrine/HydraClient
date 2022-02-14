@@ -2,25 +2,37 @@ package com.oldschoolminecraft.client.perks;
 
 import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.api.API;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class PerkChecker {
-    private HashMap<String, ArrayList<String>> perkList = new HashMap<>();
+    private ArrayList<String> perkList = new ArrayList<>();
 
-    public HashMap<String, ArrayList<String>> getPerkList()
+    public ArrayList<String> getPerkList()
     {
         return perkList;
     }
 
-    public void fetchPerks()
+    public void fetchPerks(String username)
     {
-        //String res = api.api_request("perks/get_perks", "username=" + Client.username);
-        String res = API.api_request("perks/get_perks", "username=" + "CodeKid0");
+        String res = API.api_request("perks/get_perks", "username=" + username);
 
-        if (!res.contains("perks"))
-            return;
-        if (res.contains("supporter_menu"))
-        	Client.getInstance().isSupporter = true;
+        try
+        {
+            JSONObject obj = new JSONObject(res);
+            if (obj.has("perks"))
+            {
+                JSONArray perks = obj.getJSONArray("perks");
+                for (int i = 0; i < perks.length(); i++) perkList.add(perks.getString(i));
+            }
+        } catch (Exception ex) {
+            System.out.println("There was a problem getting perks for: " + username);
+            ex.printStackTrace();
+        }
     }
 }
