@@ -27,6 +27,8 @@ public class Client {
 		eventManager = new EventManager();
 		perkChecker = new PerkChecker();
 		perkChecker.fetchPerks(mc.session.username);
+		isSupporter = perkChecker.getPerkList().contains("supporter_menu");
+		isStaff = perkChecker.getPerkList().contains("staff_menu");
 		System.out.print(isSupporter);
 
 		if(mc.session.username.contains("Player"))
