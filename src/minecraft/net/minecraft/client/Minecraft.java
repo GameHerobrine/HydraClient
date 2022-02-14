@@ -272,7 +272,7 @@ public abstract class Minecraft implements Runnable {
         GL11.glLoadIdentity();
         GL11.glMatrixMode(5888 /*GL_MODELVIEW0_ARB*/);
         this.checkGLError("Startup");
-        Client.onEnable();
+        new Client().onEnable();
         this.glCapabilities = new OpenGlCapsChecker();
         this.sndManager.loadSoundSettings(this.gameSettings);
         this.renderEngine.registerTextureFX(this.textureLavaFX);
