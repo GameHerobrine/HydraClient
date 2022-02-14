@@ -1,5 +1,6 @@
 package com.oldschoolminecraft.client;
 
+import com.oldschoolminecraft.client.event.EventManager;
 import com.oldschoolminecraft.client.perks.PerkChecker;
 
 import net.minecraft.client.Minecraft;
@@ -21,9 +22,11 @@ public class Client {
 	public boolean isDebugMode = false;
 	public boolean isStaff = false;
 	public PerkChecker perkChecker;
+	public EventManager eventManager;
 
 	public void onEnable() {
 		username = mc.session.username;
+		eventManager = new EventManager();
 		perkChecker = new PerkChecker();
 		perkChecker.fetchPerks();
 		System.out.print(isSupporter);

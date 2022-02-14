@@ -3,7 +3,7 @@ package com.oldschoolminecraft.client.event;
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import com.oldschoolminecraft.client.OSM;
+import com.oldschoolminecraft.client.Client;
 
 public class Event
 {
@@ -19,7 +19,7 @@ public class Event
     public void call()
     {
         cancelled = false;
-        CopyOnWriteArrayList<Data> dataList = OSM.instance.eventManager.get(this.getClass());
+        CopyOnWriteArrayList<Data> dataList = Client.getInstance().eventManager.get(this.getClass());
         if (dataList == null)
             return;
         for (Data data : dataList)
