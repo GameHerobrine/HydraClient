@@ -17,9 +17,5 @@ lib/
 # Block downloaded files
 runtime/*
 
-# Allow server.properties
-!jars/server.properties
-!jars/bin
-
 # Block .idea folder
 .idea/
