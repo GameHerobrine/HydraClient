@@ -7,7 +7,7 @@ import java.net.URL;
 
 import com.oldschoolminecraft.client.Client;
 
-public class api {
+public class API {
 	private static String get(String url) {
         try {
             String inputLine;
