@@ -3,17 +3,23 @@ logs/
 reobf/
 temp/
 bin/
-
-# Allow server.properties
-!jars/server.properties
-!jars/bin
+conf/
+docs/
+eclipse/
+jars/
+lib/
+*.bat
+*.sh
 
 # Block compiled Python
 *.pyc
 
 # Block downloaded files
-runtime/bin/pypy*
-!runtime/bin/
+runtime/*
+
+# Allow server.properties
+!jars/server.properties
+!jars/bin
 
 # Block .idea folder
 .idea/
