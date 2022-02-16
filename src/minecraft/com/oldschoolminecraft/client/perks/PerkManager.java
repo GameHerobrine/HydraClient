@@ -1,16 +1,12 @@
 package com.oldschoolminecraft.client.perks;
 
-import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.api.API;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class PerkChecker {
+public class PerkManager
+{
     private ArrayList<String> perkList = new ArrayList<>();
 
     public ArrayList<String> getPerkList()
@@ -18,7 +14,12 @@ public class PerkChecker {
         return perkList;
     }
 
-    public void fetchPerks(String username)
+    public final boolean hasPerk(String perk)
+    {
+        return perkList.contains(perk);
+    }
+
+    public final void fetchPerks(String username)
     {
         String res = API.api_request("perks/get_perks", "username=" + username);
 
