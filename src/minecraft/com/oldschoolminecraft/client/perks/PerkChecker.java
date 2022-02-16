@@ -1,14 +1,9 @@
 package com.oldschoolminecraft.client.perks;
 
-import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.api.API;
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class PerkChecker {
     private ArrayList<String> perkList = new ArrayList<>();
