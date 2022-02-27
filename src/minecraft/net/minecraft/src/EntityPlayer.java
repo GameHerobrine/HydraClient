@@ -3,6 +3,9 @@ package net.minecraft.src;
 import java.util.Iterator;
 import java.util.List;
 
+import com.oldschoolminecraft.client.event.Type;
+import com.oldschoolminecraft.client.event.events.EventUpdate;
+
 public abstract class EntityPlayer extends EntityLiving {
     public InventoryPlayer inventory = new InventoryPlayer(this);
     public Container inventorySlots;
@@ -57,6 +60,7 @@ public abstract class EntityPlayer extends EntityLiving {
     }
 
     public void onUpdate() {
+    	new EventUpdate(Type.PRE).call();
         if (this.isPlayerSleeping()) {
             ++this.sleepTimer;
             if (this.sleepTimer > 100) {

@@ -10,6 +10,10 @@ public class Utils {
 	public static int rainbow() {
 		return Color.HSBtoRGB((float)(System.currentTimeMillis() % 1000L) / 1000.0f, 0.8f, 0.8f);
 	}
+	
+	public static int rainbowSlow() {
+		return Color.HSBtoRGB((float)(System.currentTimeMillis() % 4000L) / 4000.0f, 0.8f, 0.8f);
+	}
 
 	public static void get(String url, HttpDataPipe dataPipe)
 	{

@@ -103,6 +103,7 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
 
 import com.oldschoolminecraft.client.Client;
+import com.oldschoolminecraft.client.event.events.EventKeyboard;
 
 public abstract class Minecraft implements Runnable {
     public static byte[] field_28006_b = new byte[10485760];
@@ -1030,6 +1031,14 @@ public abstract class Minecraft implements Runnable {
                                             this.thePlayer.handleKeyPress(Keyboard.getEventKey(), Keyboard.getEventKeyState());
                                         } while(!Keyboard.getEventKeyState());
 
+                                        EventKeyboard event = new EventKeyboard(Keyboard.getEventKey());
+                                        if (Keyboard.getEventKey() != 0) {
+                                            event.call();
+                                        }
+                                        if (event.isCancelled()) {
+                                            return;
+                                        }
+                                        
                                         if (Keyboard.getEventKey() == 87) {
                                             this.toggleFullscreen();
                                         } else {

@@ -12,6 +12,7 @@ import org.lwjgl.util.glu.GLU;
 
 import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.hud.HudMainMenu;
+import com.oldschoolminecraft.client.util.Utils;
 
 public class GuiMainMenu extends GuiScreen {
     private static final Random rand = new Random();
@@ -45,26 +46,30 @@ public class GuiMainMenu extends GuiScreen {
     protected void keyTyped(char var1, int var2) {
     }
 
-    public void initGui() {
+    @SuppressWarnings("unchecked")
+	public void initGui() {
     	
     	if(Client.getInstance().isUpdateAvailable) {
-    		int var4 = this.height / 4 + 48;
-            this.controlList.add(new GuiButton(11, this.width / 2 - 100, var4 + 72 + 12, 98, 20, "Yes"));
-            this.controlList.add(new GuiButton(10, this.width / 2 + 2, var4 + 72 + 12, 98, 20, "No"));
+    		int var4 = this.height / 4 + this.height / 10;
+            this.controlList.add(new GuiButton(11, this.width / 2 - 100, var4 + 64, 98, 20, "Yes"));
+            this.controlList.add(new GuiButton(10, this.width / 2 + 2, var4 + 64, 98, 20, "No"));
     		return;
     	}
     	
         Calendar var1 = Calendar.getInstance();
         var1.setTime(new Date());
-        if (var1.get(2) + 1 == 11 && var1.get(5) == 9) {
+        if (var1.get(2) + 1 == 11 && var1.get(5) == 9)
             this.splashText = "Happy birthday, ez!";
-        } else if (var1.get(2) + 1 == 6 && var1.get(5) == 1) {
+        else if (var1.get(2) + 1 == 6 && var1.get(5) == 1)
             this.splashText = "Happy birthday, Notch!";
-        } else if (var1.get(2) + 1 == 12 && var1.get(5) == 24) {
+        else if (var1.get(2) + 1 == 12 && var1.get(5) == 24)
             this.splashText = "Merry X-mas!";
-        } else if (var1.get(2) + 1 == 1 && var1.get(5) == 1) {
+        else if (var1.get(2) + 1 == 1 && var1.get(5) == 1)
             this.splashText = "Happy new year!";
-        }
+        else if (var1.get(Calendar.DAY_OF_MONTH) == 6 && var1.get(Calendar.MONTH) == 11) //0 is January
+        	this.splashText = "Happy birthday, Moderator_man!";
+        else if (var1.get(Calendar.DAY_OF_MONTH) == 19 && var1.get(Calendar.MONTH) == 1) //0 is January
+        	this.splashText = "Happy birthday, CodeKid0!";
 
         StringTranslate var2 = StringTranslate.getInstance();
         int var4 = this.height / 4 + 48;
@@ -120,10 +125,12 @@ public class GuiMainMenu extends GuiScreen {
     	if(Client.getInstance().isUpdateAvailable) {
     		this.drawDefaultBackground();
     		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
-    		String s1 = "There is a new update available.";
+    		
+    		String s1 = "There is a new OSM client update available.";
     		String s2 = "Would you like to update?";
-    		this.drawString(this.fontRenderer, s1, res.getScaledWidth() / 2 - this.fontRenderer.getStringWidth(s1) / 2, 58, -1);
-    		this.drawString(this.fontRenderer, s2, res.getScaledWidth() / 2 - this.fontRenderer.getStringWidth(s2) / 2, 72, -1);
+    		int y = this.height / 4 + this.height / 10;
+    		this.drawString(this.fontRenderer, s1, res.getScaledWidth() / 2 - this.fontRenderer.getStringWidth(s1) / 2, y, -1);
+    		this.drawString(this.fontRenderer, s2, res.getScaledWidth() / 2 - this.fontRenderer.getStringWidth(s2) / 2, y + 14, Utils.rainbowSlow());
     		super.drawScreen(var1, var2, var3);
     		return;
     	}
