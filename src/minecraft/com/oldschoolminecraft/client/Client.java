@@ -3,6 +3,7 @@ package com.oldschoolminecraft.client;
 import com.oldschoolminecraft.client.event.EventManager;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
+import com.oldschoolminecraft.client.updater.Updater;
 import net.minecraft.client.Minecraft;
 
 public class Client {
@@ -17,21 +18,17 @@ public class Client {
 	//Client
 	public String version = "v0.1";
 	public String name = "OSM Client";
-	public boolean isSupporter = false;
-	public boolean isDebugMode = false;
-	public boolean isStaff = false;
 	public PerkManager perkManager;
 	public EventManager eventManager;
+	public Updater updater;
 
-	public void onEnable() {
+	public void onEnable()
+	{
 		eventManager = new EventManager();
 		perkManager = new PerkManager();
 		perkManager.fetchPerks(mc.session.username);
-		isSupporter = perkManager.getPerkList().contains("supporter_menu");
-		isStaff = perkManager.getPerkList().contains("staff_menu");
-		System.out.print(isSupporter);
 
-		if(mc.session.username.contains("Player"))
-			isDebugMode = true;
+		if (perkManager.hasPerk("supporter_menu")) System.out.println("Found supporter perk");
+		updater.checkUpdates(version, (isUpdateAvailable) -> updater.update());
 	}
 }

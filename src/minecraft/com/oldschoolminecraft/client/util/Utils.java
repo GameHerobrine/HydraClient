@@ -35,4 +35,9 @@ public class Utils {
 	{
 		void pipe(String rawResponse);
 	}
+
+	public interface FlagDataPipe
+	{
+		void pipe(boolean flag);
+	}
 }
