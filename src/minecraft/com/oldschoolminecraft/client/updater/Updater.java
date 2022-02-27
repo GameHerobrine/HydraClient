@@ -8,7 +8,7 @@ public class Updater {
 	{
 		Utils.get("https://raw.githubusercontent.com/CodeKid0/OSMClientRewrite/main/version.txt", (response) ->
 		{
-			if (!response.equals(version)) pipe.pipe(true); // true for available, false for not available
+			pipe.pipe(!response.equals(version)); // true for available, false for not available
 		});
 	}
 	
