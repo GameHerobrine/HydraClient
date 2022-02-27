@@ -1,7 +1,13 @@
 package com.oldschoolminecraft.client;
 
 import com.oldschoolminecraft.client.perks.PerkManager;
+
+import org.lwjgl.input.Keyboard;
+
 import com.oldschoolminecraft.client.event.EventManager;
+import com.oldschoolminecraft.client.event.EventTarget;
+import com.oldschoolminecraft.client.event.events.EventKeyboard;
+import com.oldschoolminecraft.client.gui.GuiClientOptions;
 import com.oldschoolminecraft.client.updater.Updater;
 
 import net.minecraft.client.Minecraft;
@@ -31,5 +37,13 @@ public class Client {
 		updater = new Updater();
 		perkManager.fetchPerks(mc.session.username);
 		updater.checkUpdates(version, (flag) -> isUpdateAvailable = flag);
+		eventManager.register(this);
+	}
+	
+	@EventTarget
+	public void onKeyboard(EventKeyboard event) {
+		if(event.getKeyCode() == Keyboard.KEY_RSHIFT) {
+			mc.displayGuiScreen(new GuiClientOptions(mc.currentScreen));
+		}
 	}
 }

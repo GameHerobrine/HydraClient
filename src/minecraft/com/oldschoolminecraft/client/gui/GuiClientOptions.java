@@ -14,10 +14,10 @@ public class GuiClientOptions extends GuiScreen {
     @SuppressWarnings("unchecked")
 	public void initGui() {
     	GuiButton supporterOptionsBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 34 + 12, "Supporter Options");
-    	supporterOptionsBtn.enabled = Client.getInstance().isSupporter;
+    	supporterOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("supporter_menu");
     	
     	GuiButton staffOptionsBtn = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 58 + 12, "Staff Options");
-    	staffOptionsBtn.enabled = Client.getInstance().isStaff;
+    	staffOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("staff_menu");
     	
         this.controlList.add(supporterOptionsBtn);
         this.controlList.add(staffOptionsBtn);
