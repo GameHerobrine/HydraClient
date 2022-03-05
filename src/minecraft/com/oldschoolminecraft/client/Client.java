@@ -2,6 +2,7 @@ package com.oldschoolminecraft.client;
 
 import com.oldschoolminecraft.client.perks.PerkManager;
 
+import com.oldschoolminecraft.client.settings.SettingsManager;
 import org.lwjgl.input.Keyboard;
 
 import com.oldschoolminecraft.client.event.EventManager;
@@ -28,12 +29,14 @@ public class Client {
 	public PerkManager perkManager;
 	public Updater updater;
 	public EventManager eventManager;
+	public SettingsManager settingsManager;
 
 	public void onEnable() {
 		instance = this;
 		mc = Minecraft.getMinecraft();
 		eventManager = new EventManager();
 		perkManager = new PerkManager();
+		settingsManager = new SettingsManager();
 		updater = new Updater();
 		perkManager.fetchPerks(mc.session.username);
 		updater.checkUpdates(version, (flag) -> isUpdateAvailable = flag);
@@ -45,5 +48,7 @@ public class Client {
 		if(event.getKeyCode() == Keyboard.KEY_RSHIFT) {
 			mc.displayGuiScreen(new GuiClientOptions(mc.currentScreen));
 		}
+
+		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true);
 	}
 }

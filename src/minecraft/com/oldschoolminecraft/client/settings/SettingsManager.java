@@ -1,19 +1,30 @@
 package com.oldschoolminecraft.client.settings;
 
+import java.util.HashMap;
+
 public class SettingsManager
 {
-    public void setupDefaults()
+    private final HashMap<String, Boolean> boolsMap = new HashMap<>();
+
+    public void setBool(String key, boolean value)
     {
-        //TODO
+        boolsMap.put(key, value);
     }
 
-    public void load()
+    public void toggleBool(String key, boolean backup)
     {
-        //
+        // weird way of writing this, i know
+        boolean old = boolsMap.getOrDefault(key, !backup);
+        setBool(key, !old);
     }
 
-    public void save()
+    public boolean getBool(String key, boolean defaultValue)
     {
-        //
+        return boolsMap.getOrDefault(key, defaultValue);
+    }
+
+    public void loadFromDisk()
+    {
+        //TODO: eventually all these settings should be persisted in storage
     }
 }
