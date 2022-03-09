@@ -49,6 +49,6 @@ public class Client {
 			mc.displayGuiScreen(new GuiClientOptions(mc.currentScreen));
 		}
 
-		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true);
+		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true, "debug");
 	}
 }

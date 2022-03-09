@@ -1,5 +1,7 @@
 package com.oldschoolminecraft.client.settings;
 
+import com.oldschoolminecraft.client.Client;
+
 import java.util.HashMap;
 
 public class SettingsManager
@@ -16,6 +18,13 @@ public class SettingsManager
         // weird way of writing this, i know
         boolean old = boolsMap.getOrDefault(key, !backup);
         setBool(key, !old);
+    }
+
+    public void toggleBool(String key, boolean backup, String... requiredPerks)
+    {
+        for (String p : requiredPerks)
+            if (!Client.getInstance().perkManager.hasPerk(p)) return;
+        toggleBool(key, backup);
     }
 
     public boolean getBool(String key, boolean defaultValue)
