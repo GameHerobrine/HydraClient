@@ -1,6 +1,11 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.packets.PacketPerks;
+
 public abstract class NetHandler {
+    // register perks packet
+    public void handlePerks(PacketPerks packet) { this.registerPacket(packet); }
+
     public abstract boolean isServerHandler();
 
     public void handleMapChunk(Packet51MapChunk var1) {

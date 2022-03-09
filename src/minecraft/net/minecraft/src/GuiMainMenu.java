@@ -101,11 +101,6 @@ public class GuiMainMenu extends GuiScreen {
         if (var1.id == 4) {
             this.mc.shutdown();
         }
-        
-        if (var1.id == 11) {
-
-        }
-
     }
 
     public void drawScreen(int var1, int var2, float var3) {
