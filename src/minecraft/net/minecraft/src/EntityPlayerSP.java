@@ -9,15 +9,15 @@ public class EntityPlayerSP extends EntityPlayer {
     private MouseFilter field_21904_bK = new MouseFilter();
     private MouseFilter field_21902_bL = new MouseFilter();
 
-    public EntityPlayerSP(Minecraft var1, World var2, Session var3, int var4) {
+    public EntityPlayerSP(Minecraft var1, World var2, Session session, int var4) {
         super(var2);
         this.mc = var1;
         this.dimension = var4;
-        if (var3 != null && var3.username != null && var3.username.length() > 0) {
-            this.skinUrl = "http://s3.amazonaws.com/MinecraftSkins/" + var3.username + ".png";
+        if (session != null && session.username != null && session.username.length() > 0) {
+            this.skinUrl = "https://api.gethydra.org/cosmetics/skin?username=" + session.username;
         }
 
-        this.username = var3.username;
+        this.username = session.username;
     }
 
     public void moveEntity(double var1, double var3, double var5) {

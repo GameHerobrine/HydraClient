@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.util.BadgeRenderer;
+import com.oldschoolminecraft.client.util.RemoteTexture;
+import com.oldschoolminecraft.client.util.TextureLoadThread;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
@@ -251,8 +254,8 @@ public class RenderPlayer extends RenderLiving {
 
     // $FF: synthetic method
     // $FF: bridge method
-    protected void passSpecialRender(EntityLiving var1, double var2, double var4, double var6) {
-        this.renderName((EntityPlayer)var1, var2, var4, var6);
+    protected void passSpecialRender(EntityLiving entityLiving, double var1, double var2, double var3) {
+        this.renderName((EntityPlayer)entityLiving, var1, var2, var3);
     }
 
     // $FF: synthetic method

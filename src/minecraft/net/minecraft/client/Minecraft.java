@@ -8,6 +8,8 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Graphics;
 import java.io.File;
+
+import com.oldschoolminecraft.client.gui.GuiUpdate;
 import net.minecraft.src.AchievementList;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
@@ -273,7 +275,7 @@ public abstract class Minecraft implements Runnable {
         GL11.glLoadIdentity();
         GL11.glMatrixMode(5888 /*GL_MODELVIEW0_ARB*/);
         this.checkGLError("Startup");
-        new Client().onEnable();
+        new Client().onEnable(); //TODO: enable client
         this.glCapabilities = new OpenGlCapsChecker();
         this.sndManager.loadSoundSettings(this.gameSettings);
         this.renderEngine.registerTextureFX(this.textureLavaFX);
@@ -300,9 +302,9 @@ public abstract class Minecraft implements Runnable {
         if (this.serverName != null) {
             this.displayGuiScreen(new GuiConnecting(this, this.serverName, this.serverPort));
         } else {
-            this.displayGuiScreen(new GuiMainMenu());
+            //TODO: GuiUpdate trigger
+            this.displayGuiScreen(Client.getInstance().isUpdateAvailable ? new GuiUpdate() : new GuiMainMenu());
         }
-
     }
 
     private void loadScreen() throws LWJGLException {

@@ -44,4 +44,9 @@ public class Utils {
 	{
 		void pipe(boolean flag);
 	}
+
+	public interface GLTexturePipe
+	{
+		void pipe(RemoteTexture tex);
+	}
 }

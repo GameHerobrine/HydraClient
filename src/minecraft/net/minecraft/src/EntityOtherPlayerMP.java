@@ -9,13 +9,13 @@ public class EntityOtherPlayerMP extends EntityPlayer {
     private double otherPlayerMPPitch;
     float field_20924_a = 0.0F;
 
-    public EntityOtherPlayerMP(World var1, String var2) {
+    public EntityOtherPlayerMP(World var1, String username) {
         super(var1);
-        this.username = var2;
+        this.username = username;
         this.yOffset = 0.0F;
         this.stepHeight = 0.0F;
-        if (var2 != null && var2.length() > 0) {
-            this.skinUrl = "http://s3.amazonaws.com/MinecraftSkins/" + var2 + ".png";
+        if (username != null && username.length() > 0) {
+            this.skinUrl = "https://api.gethydra.org/cosmetics/skin?username=" + username;
         }
 
         this.noClip = true;

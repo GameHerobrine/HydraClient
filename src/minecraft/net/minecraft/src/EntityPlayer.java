@@ -137,7 +137,7 @@ public abstract class EntityPlayer extends EntityLiving {
     }
 
     public void updateCloak() {
-        this.playerCloakUrl = "http://s3.amazonaws.com/MinecraftCloaks/" + this.username + ".png";
+        this.playerCloakUrl = "https://api.gethydra.org/cosmetics/cloak?username=" + this.username;
         this.cloakUrl = this.playerCloakUrl;
     }
 
