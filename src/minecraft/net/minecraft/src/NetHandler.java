@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import com.oldschoolminecraft.client.packets.PacketPerks;
+import com.oldschoolminecraft.client.packets.GenericPacket;
 
 public abstract class NetHandler {
     // register perks packet
-    public void handlePerks(PacketPerks packet) { this.registerPacket(packet); }
+    public void handlePerks(GenericPacket packet) { this.registerPacket(packet); }
 
     public abstract boolean isServerHandler();
 

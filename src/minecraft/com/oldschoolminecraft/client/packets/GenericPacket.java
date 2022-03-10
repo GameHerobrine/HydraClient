@@ -7,13 +7,13 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-public class PacketPerks extends Packet
+public class GenericPacket extends Packet
 {
     private String jsonData;
 
-    public PacketPerks() {}
+    public GenericPacket() {}
 
-    public PacketPerks(String jsonData)
+    public GenericPacket(String jsonData)
     {
         this.jsonData = jsonData;
     }

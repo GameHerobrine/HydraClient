@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.util.BadgeRenderer;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
@@ -168,8 +169,8 @@ public class RenderLiving extends Render {
 
     }
 
-    protected void renderLivingLabel(EntityLiving var1, String var2, double var3, double var5, double var7, int var9) {
-        float var10 = var1.getDistanceToEntity(this.renderManager.livingPlayer);
+    protected void renderLivingLabel(EntityLiving entityLiving, String var2, double var3, double var5, double var7, int var9) {
+        float var10 = entityLiving.getDistanceToEntity(this.renderManager.livingPlayer);
         if (var10 <= (float)var9) {
             FontRenderer var11 = this.getFontRendererFromRenderManager();
             float var12 = 1.6F;
@@ -185,22 +186,28 @@ public class RenderLiving extends Render {
             GL11.glDisable(2929 /*GL_DEPTH_TEST*/);
             GL11.glEnable(3042 /*GL_BLEND*/);
             GL11.glBlendFunc(770, 771);
-            Tessellator var14 = Tessellator.instance;
+            Tessellator tessellator = Tessellator.instance;
             byte var15 = 0;
             if (var2.equals("deadmau5")) {
                 var15 = -10;
             }
 
             GL11.glDisable(3553 /*GL_TEXTURE_2D*/);
-            var14.startDrawingQuads();
+            tessellator.startDrawingQuads();
             int var16 = var11.getStringWidth(var2) / 2;
-            var14.setColorRGBA_F(0.0F, 0.0F, 0.0F, 0.25F);
-            var14.addVertex((double)(-var16 - 1), (double)(-1 + var15), 0.0D);
-            var14.addVertex((double)(-var16 - 1), (double)(8 + var15), 0.0D);
-            var14.addVertex((double)(var16 + 1), (double)(8 + var15), 0.0D);
-            var14.addVertex((double)(var16 + 1), (double)(-1 + var15), 0.0D);
-            var14.draw();
+            tessellator.setColorRGBA_F(0.0F, 0.0F, 0.0F, 0.25F);
+            tessellator.addVertex((double)(-var16 - 1), (double)(-1 + var15), 0.0D);
+            tessellator.addVertex((double)(-var16 - 1), (double)(8 + var15), 0.0D);
+            tessellator.addVertex((double)(var16 + 1), (double)(8 + var15), 0.0D);
+            tessellator.addVertex((double)(var16 + 1), (double)(-1 + var15), 0.0D);
+            tessellator.draw();
             GL11.glEnable(3553 /*GL_TEXTURE_2D*/);
+
+            // render badge
+            try
+            {
+                BadgeRenderer.renderBadge(tessellator, ((EntityPlayer)entityLiving).playerBadgeUrl);
+            } catch (Exception ignored) {}
             var11.drawString(var2, -var11.getStringWidth(var2) / 2, var15, 553648127);
             GL11.glEnable(2929 /*GL_DEPTH_TEST*/);
             GL11.glDepthMask(true);

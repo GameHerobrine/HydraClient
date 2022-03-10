@@ -7,15 +7,15 @@ import org.lwjgl.opengl.GL11;
 
 public class BadgeRenderer
 {
-    public static void renderBadge(int textureID)
+    public static void renderBadge(Tessellator tessellator, String badgeURL)
     {
+        if (badgeURL == null) return;
         RenderEngine renderEngine = Minecraft.getMinecraft().renderEngine;
-        Tessellator tessellator = Tessellator.instance;
 
         float badgeScale = 5f;
         int offsetX = 0; // -(strWidth + 6);
         float offsetY = -8f;
-        renderEngine.bindTexture(textureID);
+        renderEngine.bindTexture(renderEngine.getTexture(badgeURL));
         GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthMask(true);
         tessellator.startDrawingQuads();

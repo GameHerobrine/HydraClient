@@ -1,5 +1,8 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.api.API;
+import org.json.JSONObject;
+
 public class EntityOtherPlayerMP extends EntityPlayer {
     private int otherPlayerMPPosRotationIncrements;
     private double otherPlayerMPX;
@@ -16,6 +19,8 @@ public class EntityOtherPlayerMP extends EntityPlayer {
         this.stepHeight = 0.0F;
         if (username != null && username.length() > 0) {
             this.skinUrl = "https://api.gethydra.org/cosmetics/skin?username=" + username;
+            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + username, "type=badge")).getString("value"); }
+            catch (Exception ignored) {}
         }
 
         this.noClip = true;

@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -95,45 +97,61 @@ public class RenderEngine {
         return var2;
     }
 
-    public int getTexture(String var1) {
-        TexturePackBase var2 = this.texturePack.selectedTexturePack;
-        Integer var3 = (Integer)this.textureMap.get(var1);
-        if (var3 != null) {
-            return var3;
+    public int getTexture(String s) {
+        TexturePackBase texturepackbase = this.texturePack.selectedTexturePack;
+        Integer integer = (Integer)this.textureMap.get(s);
+        if (integer != null) {
+            return integer;
         } else {
             try {
                 this.singleIntBuffer.clear();
                 GLAllocation.generateTextureNames(this.singleIntBuffer);
                 int var6 = this.singleIntBuffer.get(0);
-                if (var1.startsWith("##")) {
-                    this.setupTexture(this.unwrapImageByColumns(this.readTextureImage(var2.getResourceAsStream(var1.substring(2)))), var6);
-                } else if (var1.startsWith("%clamp%")) {
+                if (s.startsWith("##")) {
+                    this.setupTexture(this.unwrapImageByColumns(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(2)))), var6);
+                } else if (s.startsWith("%clamp%")) {
                     this.clampTexture = true;
-                    this.setupTexture(this.readTextureImage(var2.getResourceAsStream(var1.substring(7))), var6);
+                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(7))), var6);
                     this.clampTexture = false;
-                } else if (var1.startsWith("%blur%")) {
+                } else if (s.startsWith("%blur%")) {
                     this.blurTexture = true;
-                    this.setupTexture(this.readTextureImage(var2.getResourceAsStream(var1.substring(6))), var6);
+                    this.setupTexture(this.readTextureImage(texturepackbase.getResourceAsStream(s.substring(6))), var6);
                     this.blurTexture = false;
                 } else {
-                    InputStream var7 = var2.getResourceAsStream(var1);
-                    if (var7 == null) {
-                        this.setupTexture(this.missingTextureImage, var6);
+                    InputStream inputstream = texturepackbase.getResourceAsStream(s);
+                    if (inputstream == null)
+                    {
+                        inputstream = getFixedResource(s);
+                        if (inputstream == null)
+                            this.setupTexture(this.missingTextureImage, var6);
+                        else
+                            this.setupTexture(this.readTextureImage(inputstream), var6);
                     } else {
-                        this.setupTexture(this.readTextureImage(var7), var6);
+                        this.setupTexture(this.readTextureImage(inputstream), var6);
                     }
                 }
 
-                this.textureMap.put(var1, var6);
+                this.textureMap.put(s, var6);
                 return var6;
             } catch (IOException var5) {
                 var5.printStackTrace();
                 GLAllocation.generateTextureNames(this.singleIntBuffer);
                 int var4 = this.singleIntBuffer.get(0);
                 this.setupTexture(this.missingTextureImage, var4);
-                this.textureMap.put(var1, var4);
+                this.textureMap.put(s, var4);
                 return var4;
             }
+        }
+    }
+
+    public InputStream getFixedResource(String resource)
+    {
+        try
+        {
+            final HttpURLConnection connection = (HttpURLConnection)new URL(resource).openConnection();
+            return connection.getInputStream();
+        } catch (Exception ex) {
+            return null;
         }
     }
 

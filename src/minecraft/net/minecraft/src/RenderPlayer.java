@@ -1,8 +1,5 @@
 package net.minecraft.src;
 
-import com.oldschoolminecraft.client.util.BadgeRenderer;
-import com.oldschoolminecraft.client.util.RemoteTexture;
-import com.oldschoolminecraft.client.util.TextureLoadThread;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
@@ -56,19 +53,21 @@ public class RenderPlayer extends RenderLiving {
         this.modelArmorChestplate.heldItemRight = this.modelArmor.heldItemRight = this.modelBipedMain.heldItemRight = false;
     }
 
-    protected void renderName(EntityPlayer var1, double var2, double var4, double var6) {
-        if (Minecraft.isGuiEnabled() && var1 != this.renderManager.livingPlayer) {
+    protected void renderName(EntityPlayer entityPlayer, double var2, double var4, double var6) {
+        // removed code to show name tag & badge in third person view
+        // var1 != this.renderManager.livingPlayer
+        if (Minecraft.isGuiEnabled()) {
             float var8 = 1.6F;
             float var9 = 0.016666668F * var8;
-            float var10 = var1.getDistanceToEntity(this.renderManager.livingPlayer);
-            float var11 = var1.isSneaking() ? 32.0F : 64.0F;
+            float var10 = entityPlayer.getDistanceToEntity(this.renderManager.livingPlayer);
+            float var11 = entityPlayer.isSneaking() ? 32.0F : 64.0F;
             if (var10 < var11) {
-                String var12 = var1.username;
-                if (!var1.isSneaking()) {
-                    if (var1.isPlayerSleeping()) {
-                        this.renderLivingLabel(var1, var12, var2, var4 - 1.5D, var6, 64);
+                String var12 = entityPlayer.username;
+                if (!entityPlayer.isSneaking()) {
+                    if (entityPlayer.isPlayerSleeping()) {
+                        this.renderLivingLabel(entityPlayer, var12, var2, var4 - 1.5D, var6, 64);
                     } else {
-                        this.renderLivingLabel(var1, var12, var2, var4, var6, 64);
+                        this.renderLivingLabel(entityPlayer, var12, var2, var4, var6, 64);
                     }
                 } else {
                     FontRenderer var13 = this.getFontRendererFromRenderManager();
@@ -103,7 +102,6 @@ public class RenderPlayer extends RenderLiving {
                 }
             }
         }
-
     }
 
     protected void renderSpecials(EntityPlayer var1, float var2) {

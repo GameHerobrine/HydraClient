@@ -19,6 +19,7 @@ public abstract class EntityPlayer extends EntityLiving {
     public String username;
     public int dimension;
     public String playerCloakUrl;
+    public String playerBadgeUrl; // badge url
     public double field_20066_r;
     public double field_20065_s;
     public double field_20064_t;

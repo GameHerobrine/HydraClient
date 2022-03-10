@@ -3,6 +3,7 @@ package com.oldschoolminecraft.client;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
 import com.oldschoolminecraft.client.settings.SettingsManager;
+import org.lwjgl.LWJGLUtil;
 import org.lwjgl.input.Keyboard;
 
 import com.oldschoolminecraft.client.event.EventManager;
@@ -12,6 +13,9 @@ import com.oldschoolminecraft.client.gui.GuiClientOptions;
 import com.oldschoolminecraft.client.updater.Updater;
 
 import net.minecraft.client.Minecraft;
+import org.lwjgl.opengl.ARBDebugOutputCallback;
+
+import static org.lwjgl.opengl.ARBDebugOutput.glDebugMessageCallbackARB;
 
 public class Client {
 	public Minecraft mc;
@@ -23,7 +27,7 @@ public class Client {
 	public static String apiURL = "https://os-mc.net/api/";
 
 	//Client
-	public String version = "b0.01";
+	public String version = "b0.1";
 	public String name = "OSM Client";
 	public boolean isUpdateAvailable = false;
 	public PerkManager perkManager;
@@ -42,7 +46,7 @@ public class Client {
 		updater.checkUpdates(version, (flag) -> isUpdateAvailable = flag);
 		eventManager.register(this);
 	}
-	
+
 	@EventTarget
 	public void onKeyboard(EventKeyboard event) {
 		if(event.getKeyCode() == Keyboard.KEY_RSHIFT) {
