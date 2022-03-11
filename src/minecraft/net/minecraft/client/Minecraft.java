@@ -125,7 +125,7 @@ public abstract class Minecraft implements Runnable {
     public Session session = null;
     public String minecraftUri;
     public Canvas mcCanvas;
-    public boolean hideQuitButton = true;
+    public boolean hideQuitButton = false;
     public volatile boolean isGamePaused = false;
     public RenderEngine renderEngine;
     public FontRenderer fontRenderer;

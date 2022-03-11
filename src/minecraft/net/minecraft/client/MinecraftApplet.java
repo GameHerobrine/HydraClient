@@ -41,7 +41,6 @@ public class MinecraftApplet extends Applet {
             this.mc.setServer(this.getParameter("server"), Integer.parseInt(this.getParameter("port")));
         }
 
-        this.mc.hideQuitButton = true;
         this.setLayout(new BorderLayout());
         this.add(this.mcCanvas, "Center");
         this.mcCanvas.setFocusable(true);

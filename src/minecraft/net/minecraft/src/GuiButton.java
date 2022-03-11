@@ -13,21 +13,19 @@ public class GuiButton extends Gui {
     public boolean enabled;
     public boolean enabled2;
 
-    public GuiButton(int var1, int var2, int var3, String var4) {
-        this(var1, var2, var3, 200, 20, var4);
+    public GuiButton(int id, int xPosition, int yPosition, String displayString) {
+        this(id, xPosition, yPosition, 200, 20, displayString);
     }
 
-    public GuiButton(int var1, int var2, int var3, int var4, int var5, String var6) {
-        this.width = 200;
-        this.height = 20;
+    public GuiButton(int id, int xPosition, int yPosition, int width, int height, String displayString) {
         this.enabled = true;
         this.enabled2 = true;
-        this.id = var1;
-        this.xPosition = var2;
-        this.yPosition = var3;
-        this.width = var4;
-        this.height = var5;
-        this.displayString = var6;
+        this.id = id;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.width = width;
+        this.height = height;
+        this.displayString = displayString;
     }
 
     protected int getHoverState(boolean var1) {
