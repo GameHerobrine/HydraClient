@@ -1,8 +1,11 @@
-# OSMClientRewrite
-A rewrite of the OldSchoolMinecraft Client.
+# HydraClient
+HydraClient is a Minecraft Beta 1.7.3 client aiming to...
 
 # Development
 This repo contains ONLY the src. You need to setup a [ModifactionStation's MCP b1.7.3 LTS workspace](https://github.com/ModificationStation/1.7.3-LTS). And replace the src folder.
+
+# Features
+TODO
 
 # Workspace setup (IMPORTANT)
  - Download and unzip the [ModifactionStation's MCP b1.7.3 LTS workspace](https://github.com/ModificationStation/1.7.3-LTS).
