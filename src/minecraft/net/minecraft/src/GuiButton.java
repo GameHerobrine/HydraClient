@@ -12,9 +12,27 @@ public class GuiButton extends Gui {
     public int id;
     public boolean enabled;
     public boolean enabled2;
+    public boolean isCustomButton;
 
     public GuiButton(int id, int xPosition, int yPosition, String displayString) {
         this(id, xPosition, yPosition, 200, 20, displayString);
+    }
+    
+    public GuiButton(int id, int xPosition, int yPosition, String displayString, boolean isCustomBtn) {
+        this(id, xPosition, yPosition, 200, 20, displayString);
+        this.isCustomButton = isCustomBtn;
+    }
+    
+    public GuiButton(int id, int xPosition, int yPosition, int width, int height, String displayString, boolean isCustomBtn) {
+        this.enabled = true;
+        this.enabled2 = true;
+        this.id = id;
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+        this.width = width;
+        this.height = height;
+        this.displayString = displayString;
+        this.isCustomButton = isCustomBtn;
     }
 
     public GuiButton(int id, int xPosition, int yPosition, int width, int height, String displayString) {
@@ -41,21 +59,36 @@ public class GuiButton extends Gui {
 
     public void drawButton(Minecraft var1, int var2, int var3) {
         if (this.enabled2) {
-            FontRenderer var4 = var1.fontRenderer;
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.renderEngine.getTexture("/gui/gui.png"));
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition && var2 < this.xPosition + this.width && var3 < this.yPosition + this.height;
-            int var6 = this.getHoverState(var5);
-            this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + var6 * 20, this.width / 2, this.height);
-            this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + var6 * 20, this.width / 2, this.height);
-            this.mouseDragged(var1, var2, var3);
-            if (!this.enabled) {
-                this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, -6250336);
-            } else if (var5) {
-                this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 16777120);
-            } else {
-                this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 14737632);
-            }
+        	if(this.isCustomButton) {
+        		FontRenderer var4 = var1.fontRenderer;
+                boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition && var2 < this.xPosition + this.width && var3 < this.yPosition + this.height;
+                int var6 = this.getHoverState(var5);
+                this.mouseDragged(var1, var2, var3);
+                this.drawRect(this.xPosition, this.yPosition, this.xPosition + width, this.yPosition + height, 0x60000000);
+                if (!this.enabled) {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, -6250336);
+                } else if (var5) {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 16777120);
+                } else {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 14737632);
+                }
+        	} else {
+                FontRenderer var4 = var1.fontRenderer;
+                GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, var1.renderEngine.getTexture("/gui/gui.png"));
+                GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+                boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition && var2 < this.xPosition + this.width && var3 < this.yPosition + this.height;
+                int var6 = this.getHoverState(var5);
+                this.drawTexturedModalRect(this.xPosition, this.yPosition, 0, 46 + var6 * 20, this.width / 2, this.height);
+                this.drawTexturedModalRect(this.xPosition + this.width / 2, this.yPosition, 200 - this.width / 2, 46 + var6 * 20, this.width / 2, this.height);
+                this.mouseDragged(var1, var2, var3);
+                if (!this.enabled) {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, -6250336);
+                } else if (var5) {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 16777120);
+                } else {
+                    this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, 14737632);
+                }
+        	}
 
         }
     }

@@ -13,20 +13,21 @@ public class GuiClientOptions extends GuiScreen {
     
     @SuppressWarnings("unchecked")
 	public void initGui() {
-    	GuiButton supporterOptionsBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 34 + 12, "Supporter Options");
+    	GuiButton supporterOptionsBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 34 + 12, "Supporter Options", true);
     	supporterOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("supporter_menu");
     	
-    	GuiButton staffOptionsBtn = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 58 + 12, "Staff Options");
+    	GuiButton staffOptionsBtn = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 58 + 12, "Staff Options", true);
     	staffOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("staff_menu");
     	
         this.controlList.add(supporterOptionsBtn);
         this.controlList.add(staffOptionsBtn);
-        this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 168, "Done"));
+        this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 168, "Done", true));
     }
     
     protected void actionPerformed(GuiButton btn) {
     	if(btn.id == 3) {
     		this.mc.currentScreen = parentScreen;
+    		this.mc.setIngameFocus();
     	}
     }
     

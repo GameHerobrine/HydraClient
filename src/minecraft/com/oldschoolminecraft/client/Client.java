@@ -34,6 +34,7 @@ public class Client {
 	public Updater updater;
 	public EventManager eventManager;
 	public SettingsManager settingsManager;
+	public boolean isCustomMainMenu = true;
 
 	public void onEnable() {
 		instance = this;
