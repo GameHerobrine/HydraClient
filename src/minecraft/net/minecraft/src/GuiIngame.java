@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.client.Minecraft;
+import reifnsk.minimap.ReiMinimap;
+
 import org.lwjgl.opengl.GL11;
 
 import com.oldschoolminecraft.client.hud.HudInGame;
@@ -21,7 +23,7 @@ public class GuiIngame extends Gui {
     private boolean recordIsPlaying = false;
     public float damageGuiPartialTime;
     float prevVignetteBrightness = 1.0F;
-
+    
     public GuiIngame(Minecraft var1) {
         this.mc = var1;
     }
@@ -163,6 +165,8 @@ public class GuiIngame extends Gui {
             GL11.glEnable(3008 /*GL_ALPHA_TEST*/);
             GL11.glEnable(2929 /*GL_DEPTH_TEST*/);
         }
+        
+        ReiMinimap.instance.onTickInGame(this.mc);
 
         String var23;
         if (this.mc.gameSettings.showDebugInfo) {
