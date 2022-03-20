@@ -18,8 +18,7 @@ public class EntityOtherPlayerMP extends EntityPlayer {
         this.yOffset = 0.0F;
         this.stepHeight = 0.0F;
         if (username != null && username.length() > 0) {
-            this.skinUrl = "https://api.gethydra.org/cosmetics/skin?username=" + username;
-            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + username, "type=badge")).getString("value"); }
+            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + username, "type=badge")).getString("value"); this.skinUrl = API.getSkinURL(username); }
             catch (Exception ignored) {}
         }
 

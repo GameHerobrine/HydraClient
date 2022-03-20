@@ -1,6 +1,5 @@
 package net.minecraft.src;
 
-import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.api.API;
 import net.minecraft.client.Minecraft;
 import org.json.JSONObject;
@@ -17,9 +16,9 @@ public class EntityPlayerSP extends EntityPlayer {
         this.mc = var1;
         this.dimension = var4;
         if (session != null && session.username != null && session.username.length() > 0) {
-            this.skinUrl = "https://api.gethydra.org/cosmetics/skin?username=" + session.username;
-            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + session.username, "type=badge")).getString("value"); }
+            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + session.username, "type=badge")).getString("value"); this.skinUrl = API.getSkinURL(session.username); }
             catch (Exception ignored) {}
+            
             System.out.println("Player badge URL: " + this.playerBadgeUrl);
         }
 

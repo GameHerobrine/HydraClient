@@ -1,6 +1,9 @@
 package net.minecraft.src;
 
 import net.minecraft.client.Minecraft;
+
+import java.awt.Color;
+
 import org.lwjgl.opengl.GL11;
 
 public class RenderPlayer extends RenderLiving {
@@ -125,7 +128,7 @@ public class RenderPlayer extends RenderLiving {
             for(int var19 = 0; var19 < 2; ++var19) {
                 var5 = var1.prevRotationYaw + (var1.rotationYaw - var1.prevRotationYaw) * var2 - (var1.prevRenderYawOffset + (var1.renderYawOffset - var1.prevRenderYawOffset) * var2);
                 float var6 = var1.prevRotationPitch + (var1.rotationPitch - var1.prevRotationPitch) * var2;
-                GL11.glPushMatrix();
+                GL11.glPushMatrix();                
                 GL11.glRotatef(var5, 0.0F, 1.0F, 0.0F);
                 GL11.glRotatef(var6, 1.0F, 0.0F, 0.0F);
                 GL11.glTranslatef(0.375F * (float)(var19 * 2 - 1), 0.0F, 0.0F);
@@ -135,6 +138,32 @@ public class RenderPlayer extends RenderLiving {
                 float var7 = 1.3333334F;
                 GL11.glScalef(var7, var7, var7);
                 this.modelBipedMain.renderEars(0.0625F);
+                GL11.glPopMatrix();
+            }
+        }
+        
+        if (var1.username.equals("CodeKid0")) {
+            for(int var19 = 0; var19 < 2; ++var19) {
+                var5 = var1.prevRotationYaw + (var1.rotationYaw - var1.prevRotationYaw) * var2 - (var1.prevRenderYawOffset + (var1.renderYawOffset - var1.prevRenderYawOffset) * var2);
+                float var6 = var1.prevRotationPitch + (var1.rotationPitch - var1.prevRotationPitch) * var2;
+                GL11.glPushMatrix();
+                
+                GL11.glDisable(GL11.GL_TEXTURE_2D);
+                //GL11.glDisable(GL11.GL_LIGHT0);
+                //GL11.glDisable(GL11.GL_LIGHT1);
+                GL11.glClearColor(0,0,0,0);
+                GL11.glColor4f(0.5f, 0.5f, 0.5f, 0.5f);
+                
+                GL11.glRotatef(var5, 0.0F, 1.0F, 0.0F);
+                GL11.glRotatef(var6, 1.0F, 0.0F, 0.0F);
+                GL11.glTranslatef(0.2F * (float)(var19 * 2 - 1), 0.0F, 0.0F);
+                GL11.glTranslatef(0.0F, -0.375F, 0.0F);
+                GL11.glRotatef(-var6, 1.0F, 0.0F, 0.0F);
+                GL11.glRotatef(-var5, 0.0F, 1.0F, 0.0F);
+                float var7 = 0.65F;
+                GL11.glScalef(var7, var7, var7); 
+                this.modelBipedMain.renderEars(0.0625F);
+                GL11.glEnable(GL11.GL_TEXTURE_2D);
                 GL11.glPopMatrix();
             }
         }

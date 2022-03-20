@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONObject;
+
 import com.oldschoolminecraft.client.Client;
 
 public class API {
@@ -28,6 +30,30 @@ public class API {
             return "";
         }
     }
+	
+	public static String getSkinURL(String username) {
+        try {
+            String inputLine;
+            URL obj = new URL("https://playerdb.co/api/player/minecraft/" + username);
+            HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+            con.setRequestMethod("GET");
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            StringBuffer r = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                r.append(inputLine);
+            }
+            in.close();
+            
+            JSONObject response = (JSONObject) new JSONObject(r.toString()).get("data");
+            response = (JSONObject) response.get("player");
+            String UUID = response.getString("raw_id");
+            return "https://crafatar.com/skins/" + UUID;
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            return "";
+        }
+	}
     
     public static String api_request(String endpoint, String ...parameters) {
         String base = Client.apiURL;
