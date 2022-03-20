@@ -38,7 +38,8 @@ public class API {
         try {
             String uuid = new JSONObject(get("https://api.mojang.com/users/profiles/minecraft/" + username)).getString("id");
             JSONArray textures = new JSONObject(get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid)).getJSONArray("properties");
-            return new String(Base64.getDecoder().decode(textures.getJSONObject(0).getString("value").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
+            JSONObject texture = new JSONObject(new String(Base64.getDecoder().decode(textures.getJSONObject(0).getString("value").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8));
+            return texture.getJSONObject("textures").getJSONObject("SKIN").getString("url");
         }
         catch (Exception ex) {
             ex.printStackTrace();
