@@ -551,6 +551,7 @@ public class RenderEngine {
     }
 
     private BufferedImage readTextureImage(InputStream var1) throws IOException {
+        if (var1 == null) return missingTextureImage; // fix crash
         BufferedImage var2 = ImageIO.read(var1);
         var1.close();
         return var2;
