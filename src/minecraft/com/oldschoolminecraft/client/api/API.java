@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.oldschoolminecraft.client.Client;
@@ -36,8 +37,8 @@ public class API {
 	public static String getSkinURL(String username) {
         try {
             String uuid = new JSONObject(get("https://api.mojang.com/users/profiles/minecraft/" + username)).getString("id");
-            JSONObject textures = (JSONObject) new JSONObject(get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid)).get("properties");
-            return new String(Base64.getDecoder().decode(textures.getString("value").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
+            JSONArray textures = new JSONObject(get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid)).getJSONArray("properties");
+            return new String(Base64.getDecoder().decode(textures.getJSONObject(0).getString("value").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
         }
         catch (Exception ex) {
             ex.printStackTrace();
