@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 import org.json.JSONObject;
 
@@ -33,21 +35,9 @@ public class API {
 	
 	public static String getSkinURL(String username) {
         try {
-            String inputLine;
-            URL obj = new URL("https://playerdb.co/api/player/minecraft/" + username);
-            HttpURLConnection con = (HttpURLConnection)obj.openConnection();
-            con.setRequestMethod("GET");
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            StringBuffer r = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                r.append(inputLine);
-            }
-            in.close();
-            
-            JSONObject response = (JSONObject) new JSONObject(r.toString()).get("data");
-            response = (JSONObject) response.get("player");
-            String UUID = response.getString("raw_id");
-            return "https://crafatar.com/skins/" + UUID;
+            String uuid = new JSONObject(get("https://api.mojang.com/users/profiles/minecraft/" + username)).getString("id");
+            JSONObject textures = (JSONObject) new JSONObject(get("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid)).get("properties");
+            return new String(Base64.getDecoder().decode(textures.getString("value").getBytes(StandardCharsets.UTF_8)), StandardCharsets.UTF_8);
         }
         catch (Exception ex) {
             ex.printStackTrace();
