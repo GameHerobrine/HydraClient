@@ -15,5 +15,5 @@ TODO
  - Open eclipse folder as a workspace in eclipse.
  - Click the arrow next to client.
  - Right-click src > go to properties > Resource Filters (Under Resource) and remove the "only matches net" filter.
+ - Locate the /jars/bin/ folder and open minecraft.jar with 7-zip, WinRAR or preferred software and put every folder from assets to that jar.
  - Done!
-
