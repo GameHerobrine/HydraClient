@@ -16,10 +16,11 @@ public class EntityPlayerSP extends EntityPlayer {
         this.mc = var1;
         this.dimension = var4;
         if (session != null && session.username != null && session.username.length() > 0) {
-            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + session.username, "type=badge")).getString("value"); this.skinUrl = API.getSkinURL(session.username); }
+            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + this.mc.session.username, "type=badge")).getString("value"); }
             catch (Exception ignored) {}
-            
-            System.out.println("Player badge URL: " + this.playerBadgeUrl);
+
+            try { this.skinUrl = API.getSkinURL(this.mc.session.username); }
+            catch (Exception ignored) {}
         }
 
         this.username = session.username;

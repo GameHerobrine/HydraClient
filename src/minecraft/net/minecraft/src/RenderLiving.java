@@ -191,10 +191,6 @@ public class RenderLiving extends Render {
             if (var2.equals("deadmau5")) {
                 var15 = -10;
             }
-            
-            if(var2.equals("CodeKid0")) {
-            	var15 = -5;
-            }
 
             GL11.glDisable(3553 /*GL_TEXTURE_2D*/);
             tessellator.startDrawingQuads();
