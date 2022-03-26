@@ -19,10 +19,10 @@ public class EntityOtherPlayerMP extends EntityPlayer {
         this.yOffset = 0.0F;
         this.stepHeight = 0.0F;
         if (username != null && username.length() > 0) {
-            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + Client.getInstance().mc.session.username, "type=badge")).getString("value"); }
+            try { this.playerBadgeUrl = new JSONObject(API.api_request("cosmetics/get_cosmetic", "username=" + this.username, "type=badge")).getString("value"); }
             catch (Exception ignored) {}
 
-            try { this.skinUrl = API.getSkinURL(Client.getInstance().mc.session.username); }
+            try { this.skinUrl = API.getSkinURL(this.username); }
             catch (Exception ignored) {}
         }
 
