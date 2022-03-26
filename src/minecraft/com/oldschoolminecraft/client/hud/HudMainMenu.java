@@ -12,6 +12,6 @@ public class HudMainMenu {
 		ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 		
 		if(Client.getInstance().perkManager.hasPerk("supporter_menu"))
-			mc.fontRenderer.drawStringWithShadow("Thanks for supporting us, " + mc.session.username + "!", 2, res.getScaledHeight() - 9, Utils.rainbow());
+			mc.fontRenderer.drawStringWithShadow("Thanks for supporting us, " + mc.session.username + "!", 2, res.getScaledHeight() - 9, Utils.rainbowSlow());
 	}
 }

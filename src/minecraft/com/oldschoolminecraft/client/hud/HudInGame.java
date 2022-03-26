@@ -15,12 +15,12 @@ public class HudInGame {
 
 		if(Client.getInstance().perkManager.hasPerk("debug") && !Minecraft.isDebugInfoEnabled() && sm.getBool("hud_debug", false)) {
 			int offset = 2;
-			fr.drawStringWithShadow("--- DEBUG MODE --- ", 2, offset, Utils.rainbow());
+			fr.drawStringWithShadow("-- Debug Mode --", 2, offset, Utils.rainbowSlow());
 			offset += 12;
-			fr.drawStringWithShadow("--- PERKS: ---", 2, offset, 0xFF14e564);
+			fr.drawStringWithShadow("Perks:", 2, offset, 0xFF14e564);
 			offset += 12;
 			for(int i = 0; i < perkChecker.getPerkList().size(); i++) {
-				fr.drawStringWithShadow(perkChecker.getPerkList().get(i), 2, offset, -1);
+				fr.drawStringWithShadow("- " + perkChecker.getPerkList().get(i), 2, offset, -1);
 				offset += 12;
 			}
 		}

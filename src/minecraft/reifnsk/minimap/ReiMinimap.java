@@ -1338,7 +1338,7 @@ public class ReiMinimap implements Runnable {
                         if (wayZ < 31.0D) {
                             GL11.glColor4f(pt.red, pt.green, pt.blue, (float)Math.min(1.0D, Math.max(0.4D, (wayZ - 1.0D) * 0.5D)));
                             this.texture(Waypoint.FILE[pt.type]);
-                            this.drawCenteringRectangle((double)x + wayZ, (double)y - wayX, 1.0D, 8.0D, 8.0D);
+                            this.drawCenteringRectangle((double)x - wayZ, (double)y - wayX, 1.0D, 8.0D, 8.0D);
                         } else {
                             t = 34.0D / wayZ;
                             wayX *= t;
