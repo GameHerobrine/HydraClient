@@ -14,11 +14,11 @@ public class GuiSupporterOptions extends GuiScreen {
     
     @SuppressWarnings("unchecked")
 	public void initGui() {
-    	GuiButton alwaysDay = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 34 + 12, "Always day: " + Client.getInstance().settingsManager.getBool("always_day", false), true);
+    	GuiButton alwaysDay = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 34 + 12, "Always day: " + Client.getInstance().settingsManager.getBool("always_day", false));
         this.alwaysDay = alwaysDay;
     	
         this.controlList.add(alwaysDay);
-        this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 168, "Done", true));
+        this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 6 + 168, "Done"));
     }
     
     protected void actionPerformed(GuiButton btn) {

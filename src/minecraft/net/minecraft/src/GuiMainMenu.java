@@ -66,15 +66,15 @@ public class GuiMainMenu extends GuiScreen {
         StringTranslate var2 = StringTranslate.getInstance();
         int var4 = this.height / 4 + 48;
         
-        if(Client.getInstance().isCustomMainMenu) {
-        	this.controlList.add(new GuiButton(1, this.width / 2 - 100, var4, var2.translateKey("menu.singleplayer"), true));
-            this.controlList.add(this.multiplayerButton = new GuiButton(2, this.width / 2 - 100, var4 + 24, var2.translateKey("menu.multiplayer"), true));
-            this.controlList.add(new GuiButton(3, this.width / 2 - 100, var4 + 48, var2.translateKey("menu.mods"), true));
+        if(Client.getInstance().customStyle) {
+        	this.controlList.add(new GuiButton(1, this.width / 2 - 100, var4, var2.translateKey("menu.singleplayer")));
+            this.controlList.add(this.multiplayerButton = new GuiButton(2, this.width / 2 - 100, var4 + 24, var2.translateKey("menu.multiplayer")));
+            this.controlList.add(new GuiButton(3, this.width / 2 - 100, var4 + 48, var2.translateKey("menu.mods")));
             if (this.mc.hideQuitButton) {
-                this.controlList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72, var2.translateKey("menu.options"), true));
+                this.controlList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72, var2.translateKey("menu.options")));
             } else {
-                this.controlList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options"), true));
-                this.controlList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit"), true));
+                this.controlList.add(new GuiButton(0, this.width / 2 - 100, var4 + 72 + 12, 98, 20, var2.translateKey("menu.options")));
+                this.controlList.add(new GuiButton(4, this.width / 2 + 2, var4 + 72 + 12, 98, 20, var2.translateKey("menu.quit")));
             }
 
             if (this.mc.session == null) {
@@ -123,13 +123,13 @@ public class GuiMainMenu extends GuiScreen {
 
     public void drawScreen(int var1, int var2, float var3) {
     	
-    	if(Client.getInstance().isCustomMainMenu) {
+    	if(Client.getInstance().customStyle) {
     		this.drawDefaultBackground();
     		Tessellator tessellator = Tessellator.instance;
             float badgeScale = 50f;
             int offsetX = this.width / 2; // -(strWidth + 6);
             float offsetY = this.height / 4;
-    		this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("https://media.discordapp.net/attachments/854720988129656833/954453477646532679/hydralogo.png"));
+    		this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/gui/oldlogo-highres.png"));
             GL11.glEnable(GL11.GL_DEPTH_TEST);
             GL11.glDepthMask(true);
             tessellator.startDrawingQuads();

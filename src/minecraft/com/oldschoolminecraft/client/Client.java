@@ -4,8 +4,6 @@ import com.oldschoolminecraft.client.event.events.EventUpdate;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
 import com.oldschoolminecraft.client.settings.SettingsManager;
-import org.lwjgl.LWJGLUtil;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import com.oldschoolminecraft.client.event.EventManager;
@@ -15,11 +13,6 @@ import com.oldschoolminecraft.client.gui.GuiClientOptions;
 import com.oldschoolminecraft.client.updater.Updater;
 
 import net.minecraft.client.Minecraft;
-import org.lwjgl.opengl.ARBDebugOutputCallback;
-
-import javax.swing.*;
-
-import static org.lwjgl.opengl.ARBDebugOutput.glDebugMessageCallbackARB;
 
 public class Client {
 	public Minecraft mc;
@@ -38,7 +31,7 @@ public class Client {
 	public Updater updater;
 	public EventManager eventManager;
 	public SettingsManager settingsManager;
-	public boolean isCustomMainMenu = true;
+	public boolean customStyle = !System.getenv().containsKey("DEFAULT_STYLE");
 
 	public void onEnable() {
 		instance = this;
