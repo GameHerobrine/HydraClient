@@ -95,15 +95,15 @@ public class Gui {
         var1.drawStringWithShadow(var2, var3, var4, var5);
     }
 
-    public void drawTexturedModalRect(int var1, int var2, int var3, int var4, int var5, int var6) {
-        float var7 = 0.00390625F;
-        float var8 = 0.00390625F;
+    public void drawTexturedModalRect(int width, int height, int x, int y, int z, int scale) {
+        float magic1 = 0.00390625F;
+        float magic2 = 0.00390625F;
         Tessellator var9 = Tessellator.instance;
         var9.startDrawingQuads();
-        var9.addVertexWithUV((double)(var1 + 0), (double)(var2 + var6), (double)this.zLevel, (double)((float)(var3 + 0) * var7), (double)((float)(var4 + var6) * var8));
-        var9.addVertexWithUV((double)(var1 + var5), (double)(var2 + var6), (double)this.zLevel, (double)((float)(var3 + var5) * var7), (double)((float)(var4 + var6) * var8));
-        var9.addVertexWithUV((double)(var1 + var5), (double)(var2 + 0), (double)this.zLevel, (double)((float)(var3 + var5) * var7), (double)((float)(var4 + 0) * var8));
-        var9.addVertexWithUV((double)(var1 + 0), (double)(var2 + 0), (double)this.zLevel, (double)((float)(var3 + 0) * var7), (double)((float)(var4 + 0) * var8));
+        var9.addVertexWithUV((double)(width + 0), (double)(height + scale), (double)this.zLevel, (double)((float)(x + 0) * magic1), (double)((float)(y + scale) * magic2));
+        var9.addVertexWithUV((double)(width + z), (double)(height + scale), (double)this.zLevel, (double)((float)(x + z) * magic1), (double)((float)(y + scale) * magic2));
+        var9.addVertexWithUV((double)(width + z), (double)(height + 0), (double)this.zLevel, (double)((float)(x + z) * magic1), (double)((float)(y + 0) * magic2));
+        var9.addVertexWithUV((double)(width + 0), (double)(height + 0), (double)this.zLevel, (double)((float)(x + 0) * magic1), (double)((float)(y + 0) * magic2));
         var9.draw();
     }
 }

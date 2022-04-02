@@ -122,48 +122,30 @@ public class GuiMainMenu extends GuiScreen {
     }
 
     public void drawScreen(int var1, int var2, float var3) {
-    	
-    	if(Client.getInstance().customStyle) {
-    		this.drawDefaultBackground();
-    		Tessellator tessellator = Tessellator.instance;
-            float badgeScale = 50f;
-            int offsetX = this.width / 2; // -(strWidth + 6);
-            float offsetY = this.height / 4;
-    		this.mc.renderEngine.bindTexture(this.mc.renderEngine.getTexture("/gui/oldlogo-highres.png"));
-            GL11.glEnable(GL11.GL_DEPTH_TEST);
-            GL11.glDepthMask(true);
-            tessellator.startDrawingQuads();
-            tessellator.setColorRGBA_F(1f, 1f, 1f, 1.0F);
-            tessellator.addVertexWithUV(-badgeScale + offsetX, badgeScale + offsetY, 0.0D, -0f, 1f);
-            tessellator.addVertexWithUV(badgeScale + offsetX, badgeScale + offsetY, 0.0D, 1f, 1f);
-            tessellator.addVertexWithUV(badgeScale + offsetX, -badgeScale + offsetY, 0.0D, 1f, -0f);
-            tessellator.addVertexWithUV(-badgeScale + offsetX, -badgeScale + offsetY, 0.0D, -0f, -0f);
-            tessellator.draw();
-             		
-    	} else {
-        	
-            this.drawDefaultBackground();
-            Tessellator var4 = Tessellator.instance;
-            short var5 = 274;
-            int var6 = this.width / 2 - var5 / 2;
-            byte var7 = 30;
-            GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/title/mclogo.png"));
-            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            this.drawTexturedModalRect(var6 + 0, var7 + 0, 0, 0, 155, 44);
-            this.drawTexturedModalRect(var6 + 155, var7 + 0, 0, 45, 155, 44);
-            var4.setColorOpaque_I(16777215);
-            GL11.glPushMatrix();
-            GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
-            GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
-            float var8 = 1.8F - MathHelper.abs(MathHelper.sin((float)(System.currentTimeMillis() % 1000L) / 1000.0F * 3.1415927F * 2.0F) * 0.1F);
-            var8 = var8 * 100.0F / (float)(this.fontRenderer.getStringWidth(this.splashText) + 32);
-            GL11.glScalef(var8, var8, var8);
-            this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
-            GL11.glPopMatrix();
-            this.drawString(this.fontRenderer, "Minecraft Beta 1.7.3", 2, 2, 5263440);
-            String var9 = "Copyright Mojang AB. Do not distribute.";
-            this.drawString(this.fontRenderer, var9, this.width - this.fontRenderer.getStringWidth(var9) - 2, this.height - 10, 16777215);
-    	}
+        this.drawDefaultBackground();
+        Tessellator var4 = Tessellator.instance;
+        short var5 = 274;
+        int width = this.width / 2 - var5 / 2;
+        byte height = 30;
+        GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/, this.mc.renderEngine.getTexture("/title/mclogo.png"));
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.drawTexturedModalRect(width + 0, height + 0, 0, 0, 155, 44);
+        this.drawTexturedModalRect(width + 155, height + 0, 0, 45, 155, 44);
+        var4.setColorOpaque_I(16777215);
+        GL11.glPushMatrix();
+
+        GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
+        GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
+        float var8 = 1.8F - MathHelper.abs(MathHelper.sin((float)(System.currentTimeMillis() % 1000L) / 1000.0F * 3.1415927F * 2.0F) * 0.1F);
+        var8 = var8 * 100.0F / (float)(this.fontRenderer.getStringWidth(this.splashText) + 32);
+        GL11.glScalef(var8, var8, var8);
+        //this.drawCenteredString(this.fontRenderer, this.splashText, 0, -8, 16776960);
+        GL11.glPopMatrix();
+        String presented = "Presented by Old School Minecraft";
+        this.drawCenteredString(this.fontRenderer, presented, this.width / 2, 80, 16776960);
+        this.drawString(this.fontRenderer, "Minecraft Beta 1.7.3", 2, 2, 5263440);
+        String var9 = "Copyright Mojang AB. Do not distribute.";
+        this.drawString(this.fontRenderer, var9, this.width - this.fontRenderer.getStringWidth(var9) - 2, this.height - 10, 16777215);
     	
     	super.drawScreen(var1, var2, var3);
         HudMainMenu.draw();
