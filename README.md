@@ -7,6 +7,10 @@ This repo contains ONLY the src. You need to setup a [ModifactionStation's MCP b
 # Features
 TODO
 
+# Credit
+Rei for Minimap,
+[BetaTweaks](https://github.com/rekadoodle/BetaTweaks) for server list
+
 # Workspace setup (IMPORTANT)
  - Download and unzip the [ModifactionStation's MCP b1.7.3 LTS workspace](https://github.com/ModificationStation/1.7.3-LTS).
  - Open setup.bat/sh, write n if the setup asks you to install some modloader classes, and pick version b1.7.3.
