@@ -1,9 +1,11 @@
 package com.oldschoolminecraft.client;
 
+import com.oldschoolminecraft.client.event.events.EventUpdate;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
 import com.oldschoolminecraft.client.settings.SettingsManager;
 import org.lwjgl.LWJGLUtil;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import com.oldschoolminecraft.client.event.EventManager;
@@ -14,6 +16,8 @@ import com.oldschoolminecraft.client.updater.Updater;
 
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.ARBDebugOutputCallback;
+
+import javax.swing.*;
 
 import static org.lwjgl.opengl.ARBDebugOutput.glDebugMessageCallbackARB;
 
@@ -55,5 +59,16 @@ public class Client {
 		}
 
 		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true, "debug");
+
+		if(event.getKeyCode() == mc.gameSettings.keyBindZoom.keyCode) {
+
+		}
+	}
+
+	@EventTarget
+	public void onUpdate(EventUpdate event) {
+		if (this.settingsManager.getBool("always_day", false)) {
+			this.mc.theWorld.setWorldTime(1000);
+		}
 	}
 }

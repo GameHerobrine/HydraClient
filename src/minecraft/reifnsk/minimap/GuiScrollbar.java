@@ -154,10 +154,10 @@ public class GuiScrollbar extends GuiButton {
         double minX;
         double maxX;
         if (this.min < this.max - this.extent) {
-            minX = (double)(this.width - 20);
+            minX = (double)(this.width / 15);
             maxX = (double)(this.extent / (this.max - this.min));
             if (maxX * minX < 3.0D) {
-                maxX = 3.0D / minX;
+                maxX = 3.06D / minX;
             }
 
             double minX1 = (double)(this.value / (this.max - this.min - this.extent)) * (1.0D - maxX);

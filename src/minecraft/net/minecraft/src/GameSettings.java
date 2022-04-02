@@ -35,6 +35,7 @@ public class GameSettings {
     public KeyBinding keyBindChat = new KeyBinding("key.chat", 20);
     public KeyBinding keyBindToggleFog = new KeyBinding("key.fog", 33);
     public KeyBinding keyBindSneak = new KeyBinding("key.sneak", 42);
+    public KeyBinding keyBindZoom = new KeyBinding("key.zoom", 46);
     public KeyBinding[] keyBindings;
     protected Minecraft mc;
     private File optionsFile;
@@ -51,7 +52,7 @@ public class GameSettings {
     public int guiScale;
 
     public GameSettings(Minecraft var1, File var2) {
-        this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog};
+        this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog, this.keyBindZoom};
         this.difficulty = 2;
         this.hideGUI = false;
         this.thirdPersonView = false;
@@ -69,7 +70,7 @@ public class GameSettings {
     }
 
     public GameSettings() {
-        this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog};
+        this.keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog, this.keyBindZoom};
         this.difficulty = 2;
         this.hideGUI = false;
         this.thirdPersonView = false;

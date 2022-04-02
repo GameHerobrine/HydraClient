@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
@@ -64,7 +65,8 @@ public class GuiButton extends Gui {
                 boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition && var2 < this.xPosition + this.width && var3 < this.yPosition + this.height;
                 int var6 = this.getHoverState(var5);
                 this.mouseDragged(var1, var2, var3);
-                this.drawRect(this.xPosition, this.yPosition, this.xPosition + width, this.yPosition + height, 0x60000000);
+                RenderUtils.drawRoundedRect(this.xPosition, this.yPosition, width, height, 10,0x60000000);
+                //this.drawRect(this.xPosition, this.yPosition, this.xPosition + width, this.yPosition + height, 0x60000000);
                 if (!this.enabled) {
                     this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, -6250336);
                 } else if (var5) {

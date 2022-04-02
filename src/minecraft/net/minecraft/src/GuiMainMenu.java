@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+
+import com.oldschoolminecraft.client.serverlist.GuiServerList;
 import org.lwjgl.opengl.GL11;
 
 import com.oldschoolminecraft.client.Client;
@@ -106,7 +108,8 @@ public class GuiMainMenu extends GuiScreen {
         }
 
         if (var1.id == 2) {
-            this.mc.displayGuiScreen(new GuiMultiplayer(this));
+            //this.mc.displayGuiScreen(new GuiMultiplayer(this));
+            this.mc.displayGuiScreen(new GuiServerList(this));
         }
 
         if (var1.id == 3) {

@@ -13,10 +13,10 @@ public class GuiClientOptions extends GuiScreen {
     
     @SuppressWarnings("unchecked")
 	public void initGui() {
-    	GuiButton supporterOptionsBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 34 + 12, "Supporter Options", true);
+    	GuiButton supporterOptionsBtn = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 34 + 12, "Supporter Options", true);
     	supporterOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("supporter_menu");
     	
-    	GuiButton staffOptionsBtn = new GuiButton(2, this.width / 2 - 100, this.height / 6 + 58 + 12, "Staff Options", true);
+    	GuiButton staffOptionsBtn = new GuiButton(1, this.width / 2 - 100, this.height / 6 + 58 + 12, "Staff Options", true);
     	staffOptionsBtn.enabled = Client.getInstance().perkManager.hasPerk("staff_menu");
     	
         this.controlList.add(supporterOptionsBtn);
@@ -25,15 +25,24 @@ public class GuiClientOptions extends GuiScreen {
     }
     
     protected void actionPerformed(GuiButton btn) {
-    	if(btn.id == 3) {
-    		this.mc.currentScreen = parentScreen;
-    		this.mc.setIngameFocus();
-    	}
+        switch (btn.id) {
+            case 3:
+                this.mc.currentScreen = parentScreen;
+                this.mc.setIngameFocus();
+                break;
+
+            case 2:
+                mc.displayGuiScreen(new GuiSupporterOptions(this.mc.currentScreen));
+                break;
+
+            case 1:
+                break;
+        }
     }
     
     public void drawScreen(int var1, int var2, float var3) {
         this.drawDefaultBackground();
-        this.drawCenteredString(this.fontRenderer, "OSM Client Settings", this.width / 2, 20, 16777215);
+        this.drawCenteredString(this.fontRenderer, "Hydra Client Settings", this.width / 2, 20, 16777215);
         super.drawScreen(var1, var2, var3);
     }
 }
