@@ -7,8 +7,8 @@ This repo contains ONLY the src. You need to setup a [ModifactionStation's MCP b
 # Features
 TODO
 
-# Credit
-Rei for Minimap,
+# Credits
+Rei for Minimap,<br>
 [BetaTweaks](https://github.com/rekadoodle/BetaTweaks) for server list
 
 # Workspace setup (IMPORTANT)
