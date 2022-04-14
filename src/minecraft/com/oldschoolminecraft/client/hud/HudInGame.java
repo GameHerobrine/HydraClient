@@ -1,6 +1,7 @@
 package com.oldschoolminecraft.client.hud;
 
 import com.oldschoolminecraft.client.Client;
+import com.oldschoolminecraft.client.hack.Fly;
 import com.oldschoolminecraft.client.perks.PerkManager;
 import com.oldschoolminecraft.client.settings.SettingsManager;
 import com.oldschoolminecraft.client.util.Utils;
@@ -23,6 +24,16 @@ public class HudInGame {
 				fr.drawStringWithShadow("- " + perkChecker.getPerkList().get(i), 2, offset, -1);
 				offset += 12;
 			}
+		}
+
+		if(Client.getInstance().slowFly) {
+			fr.drawStringWithShadow("§8[§cSlowFly§8]", 4, 4, -1);
+			Fly.runFly(Client.getInstance().mc.thePlayer, Client.getInstance().mc, true);
+		}
+
+		if(Client.getInstance().Fly) {
+			fr.drawStringWithShadow("§8[§cFly§8]", 4, 4, -1);
+			Fly.runFly(Client.getInstance().mc.thePlayer, Client.getInstance().mc, false);
 		}
 	}
 }

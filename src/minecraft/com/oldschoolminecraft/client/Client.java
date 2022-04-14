@@ -1,6 +1,7 @@
 package com.oldschoolminecraft.client;
 
 import com.oldschoolminecraft.client.event.events.EventUpdate;
+import com.oldschoolminecraft.client.packets.OnlinePlayersPacket;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
 import com.oldschoolminecraft.client.settings.SettingsManager;
@@ -32,6 +33,8 @@ public class Client {
 	public EventManager eventManager;
 	public SettingsManager settingsManager;
 	public boolean customStyle = !System.getenv().containsKey("DEFAULT_STYLE");
+	public boolean slowFly;
+	public boolean Fly;
 
 	public void onEnable() {
 		instance = this;
@@ -53,9 +56,9 @@ public class Client {
 
 		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true, "debug");
 
-		if(event.getKeyCode() == mc.gameSettings.keyBindZoom.keyCode) {
+		if(event.getKeyCode() == Keyboard.KEY_LBRACKET && this.perkManager.hasPerk("staff")) this.slowFly = !this.slowFly;
 
-		}
+		if(event.getKeyCode() == Keyboard.KEY_NUMPAD5 && this.perkManager.hasPerk("staff")) this.Fly = !this.Fly;
 	}
 
 	@EventTarget
