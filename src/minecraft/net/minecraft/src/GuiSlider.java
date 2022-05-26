@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.util.RenderUtils;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
@@ -36,8 +37,9 @@ public class GuiSlider extends GuiButton {
             }
 
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderUtils.drawRoundedRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 5, 20, 5, 0xff000000);
-            //this.drawTexturedModalRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)) + 4, this.yPosition, 196, 66, 4, 20);
+            RenderUtils.drawRoundedRect(this.xPosition + (int)(this.sliderValue * (float)(this.width - 8)), this.yPosition, 5, 20, 5, Client.getMainColor(40));
+            RenderUtils.drawRoundedOutline(this.xPosition + (int)(this.sliderValue * (this.width - 8)), this.yPosition, this.xPosition + (int)(this.sliderValue * (this.width - 8)) + 8, this.yPosition + 20, 2.0f, 2.0f, Client.getMainColor(255));
+            RenderUtils.drawRoundedOutline(this.xPosition, this.yPosition, this.xPosition + (int)(this.sliderValue * (this.width - 8)) + 8, this.yPosition + 20, 2.0f, 2.0f, Client.getMainColor(255));
         }
     }
 

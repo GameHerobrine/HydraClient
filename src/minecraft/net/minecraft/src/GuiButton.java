@@ -3,6 +3,9 @@ package net.minecraft.src;
 import com.oldschoolminecraft.client.Client;
 import com.oldschoolminecraft.client.util.RenderUtils;
 import net.minecraft.client.Minecraft;
+
+import java.awt.Color;
+
 import org.lwjgl.opengl.GL11;
 
 public class GuiButton extends Gui {
@@ -50,7 +53,8 @@ public class GuiButton extends Gui {
                 boolean var5 = var2 >= this.xPosition && var3 >= this.yPosition && var2 < this.xPosition + this.width && var3 < this.yPosition + this.height;
                 int var6 = this.getHoverState(var5);
                 this.mouseDragged(var1, var2, var3);
-                RenderUtils.drawRoundedRect(this.xPosition, this.yPosition, width, height, 10,0x75474747);
+                RenderUtils.drawRoundedRect(this.xPosition, this.yPosition, width, height, 3.0f, this.enabled ? (var5 ? new Color(0, 0, 0, 100).getRGB() : new Color(30, 30, 30, 100).getRGB()) : new Color(70, 70, 70, 50).getRGB());
+                RenderUtils.drawRoundedOutline(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 3.0f, 2.0f, this.enabled ? (var5 ? Client.getMainColor(255) : Client.getMainColor(150)) : Client.getMainColor(100));
                 //this.drawRect(this.xPosition, this.yPosition, this.xPosition + width, this.yPosition + height, 0x60000000);
                 if (!this.enabled) {
                     this.drawCenteredString(var4, this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, -6250336);

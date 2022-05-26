@@ -5,6 +5,9 @@ import com.oldschoolminecraft.client.packets.OnlinePlayersPacket;
 import com.oldschoolminecraft.client.perks.PerkManager;
 
 import com.oldschoolminecraft.client.settings.SettingsManager;
+
+import java.awt.Color;
+
 import org.lwjgl.input.Keyboard;
 
 import com.oldschoolminecraft.client.event.EventManager;
@@ -35,6 +38,9 @@ public class Client {
 	public boolean customStyle = !System.getenv().containsKey("DEFAULT_STYLE");
 	public boolean slowFly;
 	public boolean Fly;
+	public static int clientColorR = 42;
+	public static int clientColorG = 90;
+	public static int clientColorB = 221;
 
 	public void onEnable() {
 		instance = this;
@@ -56,9 +62,26 @@ public class Client {
 
 		if (event.getKeyCode() == Keyboard.KEY_RBRACKET) settingsManager.toggleBool("hud_debug", true, "debug");
 
-		if(event.getKeyCode() == Keyboard.KEY_LBRACKET && this.perkManager.hasPerk("staff")) this.slowFly = !this.slowFly;
+		if(event.getKeyCode() == Keyboard.KEY_LBRACKET && this.perkManager.hasPerk("debug") || this.perkManager.hasPerk("staff")) {
+			if(!this.slowFly) {
+				this.Fly = false;
+			}
+			this.slowFly = !this.slowFly;
+		}
+		if(event.getKeyCode() == Keyboard.KEY_NUMPAD5 && this.perkManager.hasPerk("debug") || this.perkManager.hasPerk("staff")) {
+			if(!this.Fly) {
+				this.slowFly = false;
+			}
+			this.Fly = !this.Fly;
+		}
+		if(event.getKeyCode() == Keyboard.KEY_TAB && this.mc.isMultiplayerWorld()) {
+			// s
+			this.mc.getSendQueue().addToSendQueue(new OnlinePlayersPacket());
+		}
 
-		if(event.getKeyCode() == Keyboard.KEY_NUMPAD5 && this.perkManager.hasPerk("staff")) this.Fly = !this.Fly;
+		if(event.getKeyCode() == Keyboard.KEY_V && this.perkManager.hasPerk("debug") || this.perkManager.hasPerk("staff")) {
+			this.mc.thePlayer.sendChatMessage("/vanish");
+		}
 	}
 
 	@EventTarget
@@ -66,5 +89,10 @@ public class Client {
 		if (this.settingsManager.getBool("always_day", false)) {
 			this.mc.theWorld.setWorldTime(1000);
 		}
+
+	}
+	
+	public static int getMainColor(final int alpha) {
+		return new Color(clientColorR, clientColorG, clientColorB, alpha).getRGB();
 	}
 }
